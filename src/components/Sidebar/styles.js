@@ -1,9 +1,21 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
-export const Container = styled.aside`
+interface ContainerProps {
+  // interface é como se fosse um contrato em que eu defino tudo o que vai ter e quais são os tipos de tudo que vai ter
+  isMenuOpen: Boolean
+}
+
+export const Container = styled.aside<ContainerProps>`
   background-color: ${({ theme }) => theme.colors.red};
-
-  width: 7.75rem;
+  // "\${} informa para o styled.components que aqui vamos colocar um JavaScript ou um TypeScript "
+  ${({ isMenuOpen }) =>
+    isMenuOpen
+      ? css`
+          width: 16.3rem;
+        `
+      : css`
+          width: 7.75rem;
+        `}
 
   padding: 2rem 0;
   overflow: hidden;
