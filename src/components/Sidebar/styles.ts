@@ -20,6 +20,8 @@ export const Container = styled.aside<ContainerProps>`
   padding: 2rem 0;
   overflow: hidden;
 
+  transition: width 0.3s;
+
   display: flex;
   flex-direction: column;
   align-items: center;
