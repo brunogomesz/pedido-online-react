@@ -2,7 +2,7 @@ import styled, { css } from "styled-components";
 
 interface ContainerProps {
   // interface é como se fosse um contrato em que eu defino tudo o que vai ter e quais são os tipos de tudo que vai ter
-  isMenuOpen: Boolean
+  isMenuOpen: boolean
 }
 
 export const Container = styled.aside<ContainerProps>`
