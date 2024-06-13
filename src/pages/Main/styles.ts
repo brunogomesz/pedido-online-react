@@ -5,8 +5,9 @@ export const Container = styled.main`
   min-height: 100vh;
   display: flex;
 
+  // quando coloca o > significa para a section imediata
   > section {
-    flex: 1;
+    flex: 1; // comportamento de expansão
     width: 100%;
     height: 100vh;
     overflow-y: auto;

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { NavLink } from "react-router-dom"; // ajuda a criar o componente href por baixo dos panos, além de tratar algumas questões do react dom, também acrescenta o className='active" em função do path corrente
 
 import { Container } from './styles'
 
@@ -35,28 +36,28 @@ export function Sidebar() {
       <nav>
         <ul>
           <li>
-            <a href=" " className="active">
+            <NavLink to="/" >
               <BurgerIcon />
               <span>Hambúrgueres</span>
-            </a>
+            </NavLink>
           </li>
           <li>
-            <a href=" ">
+            <NavLink to="pizzas">
               <PizzaIcon />
               <span>Pizzas</span>
-            </a>
+            </NavLink>
           </li>
           <li>
-            <a href=" ">
+            <NavLink to="drinks">
               <SodaPopIcon />
               <span>Bebidas</span>
-            </a>
+            </NavLink>
           </li>
           <li>
-            <a href=" ">
+            <NavLink to="ice-creams">
               <IceCreamIcon />
               <span>Sorvetes</span>
-            </a>
+            </NavLink>
           </li>
         </ul>
       </nav>
