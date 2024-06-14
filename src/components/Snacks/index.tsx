@@ -1,3 +1,4 @@
+import { currencyFormat } from "../../helpers/currencyFormat" // função que usa a biblioteca que está em helpers para formatar o preço
 import { Container } from "./styles"
 import { FiPlus } from "react-icons/fi"
 
@@ -15,7 +16,7 @@ export function Snacks({ snacks }: SnacksProps){
           <img src={snack.image} alt={snack.name} />
           <p>{snack.description}</p>
           <div>
-            <strong>{snack.price}</strong>
+            <strong>{currencyFormat(snack.price)}</strong>
             <button type='button'>
               <FiPlus />
             </button>
