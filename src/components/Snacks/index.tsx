@@ -1,4 +1,5 @@
 import { Container } from "./styles"
+import { FiPlus } from "react-icons/fi"
 
 interface SnacksProps {
   snacks: any[]
@@ -15,10 +16,17 @@ export function Snacks({ snacks }: SnacksProps){
           <p>{snack.description}</p>
           <div>
             <strong>{snack.price}</strong>
-            <button type='button'></button>
+            <button type='button'>
+              <FiPlus />
+            </button>
           </div>
         </div>
       ))}
     </Container>
   )
 }
+
+
+// no commit formatando snack instalamos um biblioteca através do terminal chamando
+// npm i react-icons -S (para usar o + no botão para adicionar lanche)
+// npm i polished -S (Vai calcular uma cor que acrescentar, cor pode ser mais clara ou mais escura)
