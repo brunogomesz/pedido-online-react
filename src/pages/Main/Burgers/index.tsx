@@ -1,5 +1,6 @@
 import { Head } from "../../../components/Head"
 import { SnackTitle } from "../../../components/SnackTitle"
+import { Snacks } from "../../../components/Snacks"
 
 export default function Burgers() {
 
@@ -31,6 +32,7 @@ export default function Burgers() {
     <>
       <Head title="Hambúrgueres" description="Nossos melhores burguers"/>
       <SnackTitle>Hambúrgueres</SnackTitle>
+      <Snacks snacks={data}></Snacks>
     </>
   )
 }
