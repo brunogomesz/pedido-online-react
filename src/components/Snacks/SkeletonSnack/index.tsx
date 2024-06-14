@@ -3,6 +3,7 @@ import { Skeleton } from "../../Skeleton"
 
 export function SkeletonSnack () {
   return (
+    // Esqueleto de Loading onde fica preto para carregar os dados
     <div className="skeleton-wrapper">
       <Container>
         <Skeleton type="title" />
