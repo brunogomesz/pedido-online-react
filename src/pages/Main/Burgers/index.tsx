@@ -1,38 +1,32 @@
+import { useState, useEffect } from "react"
+
 import { Head } from "../../../components/Head"
 import { SnackTitle } from "../../../components/SnackTitle"
 import { Snacks } from "../../../components/Snacks"
 
+import { getBurgers } from "../../../services/api"
+
 export default function Burgers() {
+  const [burgers, setBurgers] = useState([])
 
-  const data = [
-    {
-      id: 1,
-      snack: 'burger',
-      name: 'Mega',
-      description:
-        'O artesanal tamanho família recheado com três carnes suculentas, queijo e bacon.',
-      price: 25.5,
-      image: 'https://i.imgur.com/upjIUnG.jpg',
-    },
-    {
-      id: 2,
-      snack: 'burger',
-      name: 'Extra bacon',
-      description:
-        'Criado para os amantes de bacon, possui em todas as suas camadas bacon bem assado e ainda queijo e carne.',
-      price: 23.5,
-      image: 'https://i.imgur.com/B4J04AJ.jpg',
-    },
-  ]
+  // dispara no momento que o componente está sendo exibido
+  // primeiiro parametro função de execução
+  // array vazio que seriam os states para serem observados
+  useEffect(() => {
+    (async () => {
+      // burgerRequest dentro vai ter os dados que vem da API e também a resposta do AXIOS
+      // porém temos que seperar isso em dados e request
+      const burgerRequest = await getBurgers()
 
-  console.log('data', data)
-
+      setBurgers(burgerRequest.data)
+    })()
+  },[])
 
   return (
     <>
       <Head title="Hambúrgueres" description="Nossos melhores burguers"/>
       <SnackTitle>Hambúrgueres</SnackTitle>
-      <Snacks snacks={data}></Snacks>
+      <Snacks snacks={burgers}></Snacks>
     </>
   )
 }
