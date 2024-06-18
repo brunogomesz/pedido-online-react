@@ -1,5 +1,6 @@
-import styled, { keyframes } from "styled-components";
-import { SkeletonProps } from ".";
+import styled, { css, keyframes } from 'styled-components'
+
+import { SkeletonProps } from '.'
 
 const shimmerEffect = keyframes`
   0% {
@@ -18,14 +19,48 @@ const shimmerEffect = keyframes`
 
 export const SkeletonElement = styled.div<SkeletonProps>`
   background: linear-gradient(
-    90deg, // orientação 
+    90deg,
     ${({ theme }) => theme.colors.gray900} 0%,
     #0a0a0a 40%,
     ${({ theme }) => theme.colors.gray900} 100%
-    );
+  );
+  background-size: 200%;
+  border-radius: 4px;
 
-    background-size: 200%;
-    border-radius: 30px;
+  animation: ${shimmerEffect} 1s linear infinite;
 
-    animation: ${shimmerEffect} 1s linear infinite;
+  // desestruturando a props que está sendo passada no <SkeletonProps>
+  ${({ type }) =>
+    type === 'title' &&
+    css`
+      width: 75%;
+      height: 32px;
+      margin: 0.5rem 0;
+    `}
+
+  ${({ type }) =>
+    type === 'text' &&
+    css`
+      width: 100%;
+      height: 18px;
+      margin: 0.25rem 0;
+    `}
+
+  ${({ type }) =>
+    type === 'image' &&
+    css`
+      width: 200px;
+      height: 200px;
+      margin: 0.25rem 0;
+      border-radius: 50%;
+    `}
+
+  ${({ type }) =>
+    type === 'thumbnail' &&
+    css`
+      width: 100%;
+      height: 200px;
+      margin: 0.5rem 0;
+      border-radius: 10px;
+    `}
 `

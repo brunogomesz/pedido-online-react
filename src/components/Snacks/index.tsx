@@ -1,4 +1,5 @@
 import { currencyFormat } from "../../helpers/currencyFormat" // função que usa a biblioteca que está em helpers para formatar o preço
+import { SkeletonSnack } from "./SkeletonSnack"
 import { Container } from "./styles"
 import { FiPlus } from "react-icons/fi"
 
@@ -10,8 +11,8 @@ export function Snacks({ snacks }: SnacksProps){
   return (
     <Container>
       {/* Em um ambiente normal de JavaScript colocariamos a {} depois do => porque vai vim uma função em seguida, mas em jsx colocamos () */}
-      {!snacks.length ? (
-        <p style={{ color: '#fff' }}>Loading...</p>
+      {!snacks.length ? ( // carrega o Skeleton de loading
+        [1,2,3,4].map((n) => <SkeletonSnack key={n} />)
       ) : (
         snacks.map((snack) => (
           <div key={snack.id} className='snack'>

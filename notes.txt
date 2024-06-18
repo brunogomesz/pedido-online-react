@@ -1,0 +1,11 @@
+// npm i react-icons -S (para usar o + no botão para adicionar lanche)
+// npm i polished -S (Vai calcular uma cor que acrescentar, cor pode ser mais clara ou mais escura)
+// npm i axios -S (biblioteca para chamadas de API)
+// npm i json-server --save-dev (utilizado apenas para desenvolvimento)
+
+
+--- comandos para iniciar
+npm run json-server
+npm start
+
+JSON Server simula uma API Fake
