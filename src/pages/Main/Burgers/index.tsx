@@ -1,17 +1,17 @@
-import { useContext } from "react"
+import { useContext } from 'react'
 
-import { Head } from "../../../components/Head"
-import { SnackTitle } from "../../../components/SnackTitle"
-import { Snacks } from "../../../components/Snacks"
+import { SnackContext } from '../../../App'
 
-import { SnackContext } from "../../../App"
+import { Head } from '../../../components/Head'
+import { Snacks } from '../../../components/Snacks'
+import { SnackTitle } from '../../../components/SnackTitle'
 
 export default function Burgers() {
   const { burgers } = useContext(SnackContext)
 
   return (
     <>
-      <Head title="Hambúrgueres" description="Nossos melhores burguers"/>
+      <Head title='Hambúrgueres' />
       <SnackTitle>Hambúrgueres</SnackTitle>
       <Snacks snacks={burgers}></Snacks>
     </>
