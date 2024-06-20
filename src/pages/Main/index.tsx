@@ -1,6 +1,7 @@
 import { Outlet } from 'react-router-dom' // componente que renderiza sub-páginas que pertence a página principal
 
 import { Sidebar } from '../../components/Sidebar'
+import { MyOrder } from '../../components/MyOrder'
 
 import { Container } from './styles'
 
@@ -14,6 +15,7 @@ export default function Main() {
         <img src={logoImg} />
         <Outlet />
       </section>
+      <MyOrder />
     </Container>
   )
 
