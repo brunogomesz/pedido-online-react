@@ -90,7 +90,21 @@ export const Container = styled.main`
         width: 1.5rem;
         padding-right: 0;
 
-        /* ação / deletar */
+        button {
+          background: none;
+          border: none;
+          width: 100%;
+
+          display: flex;
+          align-items: center;
+          justify-content: flex-end;
+
+          svg {
+            fill: ${({ theme }) => theme.colors.yellow};
+            width: 1.5rem;
+            height: 1.5rem;
+          }
+        }
       }
     }
   }

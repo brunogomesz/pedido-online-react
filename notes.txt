@@ -3,7 +3,7 @@
 // npm i axios -S (biblioteca para chamadas de API)
 // npm i json-server --save-dev (utilizado apenas para desenvolvimento)
 // npm i react-toastify
-
+// npm i react-icons
 
 --- comandos para iniciar
 npm run json-server
