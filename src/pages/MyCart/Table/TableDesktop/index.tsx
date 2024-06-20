@@ -2,6 +2,9 @@ import { useCart } from '../../../../hooks/useCart'
 
 import { currencyFormat } from '../../../../helpers/currencyFormat'
 
+import minusImg from '../../../../assets/circle-minus.svg'
+import plusImg from '../../../../assets/circle-plus.svg'
+
 import { Container } from './styles'
 
 export function TableDesktop() {
@@ -11,7 +14,7 @@ export function TableDesktop() {
     <Container>
       <table>
         <thead>
-          <tr> {/* tr = linha | td = coluna | como o td está contido no thead, chamamos de th*/}
+          <tr>{/* tr = linha | td = coluna | como o td está contido no thead, chamamos de th*/}
             <th></th>
             <th>Lanche</th>
             <th>Qtd</th>
@@ -29,7 +32,17 @@ export function TableDesktop() {
                 <h4>{item.name}</h4>
                 <span>{currencyFormat(item.price)}</span>
               </td>
-              <td>{item.quantity}</td>
+              <td>
+                <div>
+                  <button type='button' onClick={() => console.log(`decrementar snack`, item)}>
+                    <img src={minusImg} alt='Remover quantidade' />
+                  </button>
+                  <span>{`${item.quantity}`.padStart(2, '0')}</span>
+                  <button type='button' onClick={() => console.log(`incrementar snack`, item)}>
+                    <img src={plusImg} alt='Adicionar quantidade' />
+                  </button>
+                </div>
+              </td>
               <td>
                 <h5>{currencyFormat(item.subtotal)}</h5>
               </td>
