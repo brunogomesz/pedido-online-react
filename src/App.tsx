@@ -7,6 +7,7 @@ import { AppRoutes } from './routes'
 import { Normalize } from 'styled-normalize'
 import { GlobalStyle } from './styles/global'
 import { Theme } from './styles/Theme'
+import { CartProvider } from './contexts/CartContext'
 
 export default function App() {
 
@@ -14,9 +15,11 @@ export default function App() {
     <BrowserRouter>
       <Theme>
         <SnackProvider>
-          <AppRoutes />
-          <GlobalStyle />
-          <Normalize />
+          <CartProvider>
+            <AppRoutes />
+            <GlobalStyle />
+            <Normalize />
+          </CartProvider>
         </SnackProvider>
       </Theme>
     </BrowserRouter>

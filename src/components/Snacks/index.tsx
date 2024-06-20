@@ -1,5 +1,6 @@
 import { currencyFormat } from "../../helpers/currencyFormat" // função que usa a biblioteca que está em helpers para formatar o preço
 import { SnackData } from "../../interfaces/SnackData"
+import { useCart } from "../../hooks/useCart"
 
 import { SkeletonSnack } from "./SkeletonSnack"
 import { Container } from "./styles"
@@ -10,6 +11,9 @@ interface SnacksProps {
 }
 
 export function Snacks({ snacks }: SnacksProps){
+  const { addSnackIntoCart } = useCart()
+
+
   return (
     <Container>
       {/* Em um ambiente normal de JavaScript colocariamos a {} depois do => porque vai vim uma função em seguida, mas em jsx colocamos () */}
@@ -23,7 +27,7 @@ export function Snacks({ snacks }: SnacksProps){
             <p>{snack.description}</p>
             <div>
               <strong>{currencyFormat(snack.price)}</strong>
-              <button type='button'>
+              <button type='button' onClick={() => addSnackIntoCart(snack)}>
                 <FiPlus />
               </button>
             </div>

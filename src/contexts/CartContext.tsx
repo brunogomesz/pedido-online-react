@@ -41,6 +41,8 @@ export function CartProvider({ children }: CartProviderProps){
     //adiciona o snack no cart existente
     const newCart = [...cart, newSnack] // push de um array, coloca o novo cart no final da fila
 
+    console.log(`newCart`, newCart)
+
     setCart(newCart)
   }
 
