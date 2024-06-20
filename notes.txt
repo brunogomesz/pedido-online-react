@@ -2,6 +2,7 @@
 // npm i polished -S (Vai calcular uma cor que acrescentar, cor pode ser mais clara ou mais escura)
 // npm i axios -S (biblioteca para chamadas de API)
 // npm i json-server --save-dev (utilizado apenas para desenvolvimento)
+// npm i react-toastify
 
 
 --- comandos para iniciar
