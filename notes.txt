@@ -5,6 +5,7 @@
 // npm i react-toastify
 // npm i react-icons
 // npm install react-hook-form
+// npm install @hookform/resolvers yup
 
 --- comandos para iniciar
 npm run json-server
