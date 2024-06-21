@@ -4,7 +4,7 @@ import styled from 'styled-components'
 
 export const Container = styled(Link)`
 
-position: absolute;
+  position: absolute;
   right: 1.5rem;
   bottom: 0.5rem;
 
