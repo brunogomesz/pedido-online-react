@@ -1,6 +1,7 @@
-import { SubmitHandler, useForm } from 'react-hook-form'
-import { yupResolver } from "@hookform/resolvers/yup"
-import * as yup from "yup"
+import { yupResolver } from '@hookform/resolvers/yup'
+import { Controller, SubmitHandler, useForm } from 'react-hook-form'
+import { IMaskInput } from 'react-imask'
+import * as yup from 'yup'
 
 import { Head } from '../../components/Head'
 import { PayOrder } from '../../components/OrderCloseAction/PayOrder'
@@ -11,27 +12,23 @@ import { Container, Form, Inner } from './styles'
 // yup / react-hook-form
 const schema = yup
   .object({
-    fullName: yup.string().required('O nome e o sobrenome são obrigatórios.').min(3, 'Nome e sobrenome muito curto'),
+    fullName: yup
+      .string()
+      .required('Nome e sobrenome são obrigatórios.')
+      .min(3, 'Nome e sobrenome muito curto.'),
     email: yup.string().email().required(),
     mobile: yup.string().required(),
   })
   .required()
 
-  type FieldValues = yup.InferType<typeof schema>
-
-// react-hook-form
-// não é necessário utilizar isso pois já estamos obtendo os dados no schema
-// type FieldValues = {
-//   fullName: string
-//   email: string
-//   mobile: string
-// }
+type FieldValues = yup.InferType<typeof schema>
 
 export default function Payment() {
-  // react-hook-form
+// react-hook-form
   const {
-    register,
-    handleSubmit, // capita o evento submite do formulário e executa a função abaixo
+    control, // vem do imask
+    register, // react-hook-form
+    handleSubmit, // capita o evento submite do formulário e executa a função abaixo / react-hook-form
     formState: { errors },
   } = useForm<FieldValues>({
     resolver: yupResolver(schema),
@@ -48,30 +45,48 @@ export default function Payment() {
 
           <div className='field'>
             <label htmlFor='fullName'>Nome e sobrenome</label>
-            <input
-              type='text'
-              id='fullName'
-              autoComplete='name'
-              {...register('fullName')}
+
+            <Controller
+              name='fullName'
+              control={control}
+              render={({ field }) => (
+                <input type='text' id='fullName' autoComplete='name' {...field} />
+              )}
             />
+
             {errors.fullName && <p className='error'>{errors.fullName.message}</p>}
           </div>
 
           <div className='grouped'>
             <div className='field'>
               <label htmlFor='email'>E-mail</label>
-              <input
-                type='email'
-                id='email'
-                autoComplete='email'
-                {...register('email')}
+
+              <Controller
+                name='email'
+                control={control}
+                render={({ field }) => (
+                  <input type='text' id='email' autoComplete='email' {...field} />
+                )}
               />
+
               {errors.email && <p className='error'>{errors.email.message}</p>}
             </div>
 
             <div className='field'>
               <label htmlFor='mobile'>Celular</label>
-              <input type='tel' id='mobile' autoComplete='phone' {...register('fullName')}/>
+              <Controller
+                name='mobile'
+                control={control}
+                render={({ field }) => (
+                  <IMaskInput
+                    type='tel'
+                    id='mobile'
+                    autoComplete='phone'
+                    mask={'(00) 90000-0000'}
+                    {...field}
+                  />
+                )}
+              />
               {errors.mobile && <p className='error'>{errors.mobile.message}</p>}
             </div>
 

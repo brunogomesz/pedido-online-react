@@ -6,6 +6,7 @@
 // npm i react-icons
 // npm install react-hook-form
 // npm install @hookform/resolvers yup
+// npm install react-imask
 
 --- comandos para iniciar
 npm run json-server
