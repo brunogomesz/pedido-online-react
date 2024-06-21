@@ -47,7 +47,8 @@ export const Form = styled.form`
   input[type='email'],
   input[type='number'],
   input[type='tel'],
-  input[type='text'] {
+  input[type='text'],
+  select {
     flex-grow: 1; // esticar na horizontal
     background-color: ${({ theme }) => theme.colors.gray800};
     color: ${({ theme }) => theme.colors.white};
