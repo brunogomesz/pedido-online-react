@@ -1,4 +1,5 @@
 import { createContext, ReactNode, useState } from 'react'
+import { useNavigate } from 'react-router-dom' // é um hook que permite extrair um método que serve para navegação
 import { toast } from 'react-toastify'
 
 import { SnackData } from '../interfaces/SnackData'
@@ -18,6 +19,7 @@ interface CartContextProps {
   snackCartIncrement: (snack: Snack) => void
   snackCartDecrement: (snack: Snack) => void
   confirmOrder: () => void
+  payOrder: () => void
 }
 
 interface CartProviderProps {
@@ -27,6 +29,7 @@ interface CartProviderProps {
 export const CartContext = createContext({} as CartContextProps)
 
 export function CartProvider({ children }: CartProviderProps) {
+  const navigate = useNavigate()
   const [cart, setCart] = useState<Snack[]>([])
 
 //função de adicionar
@@ -100,7 +103,12 @@ export function CartProvider({ children }: CartProviderProps) {
     updateSnackQuantity(snack, snack.quantity - 1)
   }
 
+  //direciona para tela de pagamento
   function confirmOrder() {
+    navigate('/payment')
+  }
+
+  function payOrder() {
     return
   }
 
@@ -114,6 +122,7 @@ export function CartProvider({ children }: CartProviderProps) {
         snackCartIncrement,
         snackCartDecrement,
         confirmOrder,
+        payOrder
       }}
     >
       {children}
