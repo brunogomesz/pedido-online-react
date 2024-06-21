@@ -7,6 +7,7 @@
 // npm install react-hook-form
 // npm install @hookform/resolvers yup
 // npm install react-imask
+// npm i @brazilian-utils/brazilian-utils // ferramentas para validar dados do brazil
 
 --- comandos para iniciar
 npm run json-server

@@ -7,27 +7,14 @@ import { Head } from '../../components/Head'
 import { PayOrder } from '../../components/OrderCloseAction/PayOrder'
 import { OrderHeader } from '../../components/OrderHeader'
 
+import { schema, FieldValues } from './validationSchema'
+
 import { Container, Form, Inner } from './styles'
-
-// yup / react-hook-form
-const schema = yup
-  .object({
-    fullName: yup
-      .string()
-      .required('Nome e sobrenome são obrigatórios.')
-      .min(3, 'Nome e sobrenome muito curto.'),
-    email: yup.string().email().required(),
-    mobile: yup.string().required(),
-  })
-  .required()
-
-type FieldValues = yup.InferType<typeof schema>
 
 export default function Payment() {
 // react-hook-form
   const {
     control, // vem do imask
-    register, // react-hook-form
     handleSubmit, // capita o evento submite do formulário e executa a função abaixo / react-hook-form
     formState: { errors },
   } = useForm<FieldValues>({
