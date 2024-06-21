@@ -12,3 +12,4 @@ export const Inner = styled.main`
   padding: 2rem 2.5rem;
   border-radius: 8px;
 `
+export const Form = styled.form``
