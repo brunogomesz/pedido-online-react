@@ -1,4 +1,4 @@
-import { isValidPhone } from '@brazilian-utils/brazilian-utils'
+import { isValidCNPJ, isValidCPF, isValidPhone } from '@brazilian-utils/brazilian-utils'
 import * as yup from 'yup'
 
 // yup / react-hook-form
@@ -15,6 +15,25 @@ export const schema = yup
       .required('O celular é obrigatório.')
       .transform((value) => value.replace(/[^\d]/g, '')) // transform - porque vai substituir tudo que não é número exemplo (), -, " " por vazio, por nada, ficando apenas os números
       .test('validateMobile', 'O celular inválido.', (value) => isValidPhone(value)),
+    document: yup
+      .string()
+      .required('O CPF/CNPJ é obrigatório.')
+      .transform((value) => value.replace(/[^\d]/g, ''))
+      .test(
+        'validateDocument',
+        'O CPF/CNPJ é inválido.',
+        (value) => isValidCPF(value) || isValidCNPJ(value),
+      ),
+    zipCode: yup
+      .string()
+      .required('O CEP é obrigatório.')
+      .transform((val) => val.replace(/[^\d]+/g, '')),
+    street: yup.string().required('O endereço é obrigatório.'),
+    number: yup.string().required('O número é obrigatório.'),
+    complement: yup.string(),
+    neighborhood: yup.string().required('O bairro é obrigatório.'),
+    city: yup.string().required('A cidade é obrigatória.'),
+    state: yup.string().required('O estado é obrigatório.'),
   })
   .required()
 
