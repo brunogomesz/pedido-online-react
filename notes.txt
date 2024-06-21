@@ -4,6 +4,7 @@
 // npm i json-server --save-dev (utilizado apenas para desenvolvimento)
 // npm i react-toastify
 // npm i react-icons
+// npm install react-hook-form
 
 --- comandos para iniciar
 npm run json-server
