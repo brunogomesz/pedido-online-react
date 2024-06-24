@@ -52,6 +52,11 @@ export function CartProvider({ children }: CartProviderProps) {
     localStorage.setItem(localStorageKey, JSON.stringify(items))
   }
 
+  // limpar o localStorage
+  function cleanCart(){
+    localStorage.removeItem(localStorageKey)
+  }
+
 //função de adicionar
   function addSnackIntoCart(snack: SnackData): void {
 
@@ -131,6 +136,9 @@ export function CartProvider({ children }: CartProviderProps) {
   function payOrder(customer: CustomerData) {
     console.log('payOrder', cart, customer)
     // chamada de API para o back-end
+
+    cleanCart() // deve ser executado após retorno positivo da API
+    
     return
   }
 
