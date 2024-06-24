@@ -33,7 +33,18 @@ export const CartContext = createContext({} as CartContextProps)
 
 export function CartProvider({ children }: CartProviderProps) {
   const navigate = useNavigate()
-  const [cart, setCart] = useState<Snack[]>([])
+  const [cart, setCart] = useState<Snack[]>(() => {
+    const value = localStorage.getItem(localStorageKey)
+
+    // se value conter dados do localStorage retorna os arquivos em JSON
+    if (value) {
+      return JSON.parse(value)
+    }
+
+    return []
+
+    // função vai continuar retornando dados vazios só quando não tiver dados no localStorage
+  }) // recuperar as informações do localStorage usando o useState
 
   // salvando as informações do carrinho no localStorage
   function saveCart(items: Snack[]){
